@@ -2,6 +2,7 @@ var path = require('path');
 
 const OUT_DIR_ABS = path.resolve('./dist');
 const IS_PROD = (process.env.NODE_ENV === 'prod') ? true : false;
+const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
 
 module.exports = {
   name: 'js-files',
@@ -11,9 +12,8 @@ module.exports = {
   output: {
     path: OUT_DIR_ABS,
     filename: './js/[name].bundle.js'
-  },module: {
-    rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-    ]
-  }
+  },
+  plugins: [
+    new HtmlWebPackPlugin()
+ ]
 };
