@@ -11,5 +11,9 @@ module.exports = {
   output: {
     path: OUT_DIR_ABS,
     filename: './js/[name].bundle.js'
+  },module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
   }
 };
