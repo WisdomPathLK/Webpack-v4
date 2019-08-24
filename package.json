@@ -1,6 +1,6 @@
 {
   "name": "webpack-v4",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Webpack for Es6 Es7 development",
   "main": "index.js",
   "scripts": {
