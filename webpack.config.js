@@ -18,8 +18,34 @@ module.exports = {
     path: OUT_DIR_ABS,
     filename: './js/[name].bundle.js'
   },
+  module: {
+    rules: [
+      { 
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader" 
+      },
+      {
+        test:/\.css$/,
+        use:['style-loader','css-loader']
+      }
+    ]
+  },
   plugins: [
-    new HtmlWebPackPlugin(),
+    new HtmlWebPackPlugin({
+      title: 'Webpack 4 Starter',
+      template: './src/index.html',
+      inject: true,
+      minify: {
+      removeComments: true,
+        collapseWhitespace: false
+      }
+    }),
     new webpack.BannerPlugin( banner )
- ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    open: true
+  }
 };
